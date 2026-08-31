@@ -1,0 +1,195 @@
+{
+  "env_id": "PickCube-v1",
+  "control_mode": "pd_ee_delta_pose",
+  "max_episode_steps": 200,
+  "solver": "scripted (privileged state)",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "upper_bound": 20,
+  "records": [
+    {
+      "seed": 0,
+      "solved": true,
+      "steps": 49,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 1,
+      "solved": true,
+      "steps": 44,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 2,
+      "solved": true,
+      "steps": 28,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 3,
+      "solved": true,
+      "steps": 44,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 4,
+      "solved": true,
+      "steps": 48,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 5,
+      "solved": true,
+      "steps": 45,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 6,
+      "solved": true,
+      "steps": 43,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 7,
+      "solved": true,
+      "steps": 42,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 8,
+      "solved": true,
+      "steps": 9,
+      "is_grasped": false,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 9,
+      "solved": true,
+      "steps": 49,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 10,
+      "solved": true,
+      "steps": 48,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 11,
+      "solved": true,
+      "steps": 32,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 12,
+      "solved": true,
+      "steps": 31,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 13,
+      "solved": true,
+      "steps": 47,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 14,
+      "solved": true,
+      "steps": 31,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 15,
+      "solved": true,
+      "steps": 38,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 16,
+      "solved": true,
+      "steps": 42,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 17,
+      "solved": true,
+      "steps": 42,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 18,
+      "solved": true,
+      "steps": 36,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    },
+    {
+      "seed": 19,
+      "solved": true,
+      "steps": 40,
+      "is_grasped": true,
+      "is_obj_placed": true,
+      "is_robot_static": true
+    }
+  ],
+  "noop_lower_bound": 1,
+  "noop_success_seeds": [
+    8
+  ]
+}

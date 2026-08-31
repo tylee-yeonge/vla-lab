@@ -1,0 +1,53 @@
+diff --git a/prismatic/vla/datasets/rlds/oxe/configs.py b/prismatic/vla/datasets/rlds/oxe/configs.py
+index 2b8dcb9..f801b85 100644
+--- a/prismatic/vla/datasets/rlds/oxe/configs.py
++++ b/prismatic/vla/datasets/rlds/oxe/configs.py
+@@ -670,4 +670,11 @@ OXE_DATASET_CONFIGS = {
+         "state_encoding": StateEncoding.POS_EULER,
+         "action_encoding": ActionEncoding.EEF_POS,
+     },
++        "maniskill_pickcube": {
++        "image_obs_keys": {"primary": "image", "secondary": None, "wrist": None},   # 빌더의 키 이름
++        "depth_obs_keys": {"primary": None, "secondary": None, "wrist": None},      # 깊이 없음
++        "state_obs_keys": [None, None, None],        # proprio 를 안 넣었으면 비운다 (형식은 1-3 확인)
++        "state_encoding": StateEncoding.NONE,        # <- 1-2 에서 본 실제 이름으로
++        "action_encoding": ActionEncoding.EEF_POS,   # <- 7차원 = XYZ delta + RPY + gripper
++    },
+ }
+diff --git a/prismatic/vla/datasets/rlds/oxe/mixtures.py b/prismatic/vla/datasets/rlds/oxe/mixtures.py
+index aca03da..2982371 100644
+--- a/prismatic/vla/datasets/rlds/oxe/mixtures.py
++++ b/prismatic/vla/datasets/rlds/oxe/mixtures.py
+@@ -206,5 +206,10 @@ OXE_NAMED_MIXTURES: Dict[str, List[Tuple[str, float]]] = {
+     "libero_10_no_noops": [
+         ("libero_10_no_noops", 1.0),
+     ],
++
++    # ====== maniskill
++    "maniskill_pickcube_only": [
++        ("maniskill_pickcube", 1.0),    
++    ],
+ }
+ # fmt: on
+diff --git a/prismatic/vla/datasets/rlds/oxe/transforms.py b/prismatic/vla/datasets/rlds/oxe/transforms.py
+index cc9c687..5d7ed16 100644
+--- a/prismatic/vla/datasets/rlds/oxe/transforms.py
++++ b/prismatic/vla/datasets/rlds/oxe/transforms.py
+@@ -841,6 +841,11 @@ def libero_dataset_transform(trajectory: Dict[str, Any]) -> Dict[str, Any]:
+     return trajectory
+ 
+ 
++def maniskill_pickcube_transform(trajectory: Dict[str, Any]) -> Dict[str, Any]:
++    trajectory["language_instruction"] = trajectory["observation"]["language_instruction"] \
++        if "language_instruction" in trajectory["observation"] else trajectory["language_instruction"]
++    return trajectory
++
+ # === Registry ===
+ OXE_STANDARDIZATION_TRANSFORMS = {
+     "bridge_oxe": bridge_oxe_dataset_transform,
+@@ -919,4 +924,5 @@ OXE_STANDARDIZATION_TRANSFORMS = {
+     "libero_object_no_noops": libero_dataset_transform,
+     "libero_goal_no_noops": libero_dataset_transform,
+     "libero_10_no_noops": libero_dataset_transform,
++    "maniskill_pickcube": maniskill_pickcube_transform,
+ }

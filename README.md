@@ -8,7 +8,7 @@ VLA 모델을 **실제로 돌게 만드는 과정**의 공개 기록입니다. �
 
 | # | 산출물 | 내용 | 상태 |
 |---|---|---|---|
-| v1.5 | [`v1.5-openvla-lora-sim/`](./v1.5-openvla-lora-sim/) | OpenVLA 7B 를 sim (ManiSkill) 데이터로 LoRA adaptation — zero-shot vs fine-tuned before/after 정량 분석 (N회 반복, 분산·부분 도달률 보고) | 작성 중 (2026.09) |
+| v1.5 | [`v1.5-openvla-lora-sim/`](./v1.5-openvla-lora-sim/) | OpenVLA 7B 를 sim (ManiSkill) 데이터로 LoRA adaptation — zero-shot vs fine-tuned, 동일 조건 98쌍, 부분 도달률·배제 분석 | **발행 (2026-08-31)** |
 | v2.5 | `v2.5-smolvla-so101-real/` | SO-101 실기 teleop 데이터셋 (LeRobot 포맷, HF Hub) + SmolVLA 실기 zero-shot vs fine-tuned before/after | 예정 (2026.11-12) |
 
 ## 실행 환경 요약

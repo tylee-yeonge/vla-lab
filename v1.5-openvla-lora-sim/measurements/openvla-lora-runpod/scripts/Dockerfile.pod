@@ -1,0 +1,26 @@
+# pod 배포용 한 겹. 실습 1 의 이미지를 베이스로 삼는다
+FROM openvla-train:v1
+
+# RunPod 커스텀 이미지는 sshd 를 스스로 갖춰야 한다.
+# rsync 도 이 sshd 위에서 돈다.
+# 호스트 키를 지우는 이유: openssh-server 설치 과정이 빌드 시점에 키를 만들어
+#   이미지에 구워 넣는다. 그대로 두고 public repository 에 올리면 그 개인키를
+#   누구나 받을 수 있어 중간자 공격을 탐지하지 못한다.
+#   시작 스크립트의 ssh-keygen -A 가 컨테이너마다 새로 만든다
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-server && \
+    mkdir -p /var/run/sshd && \
+    rm -f /etc/ssh/ssh_host_* && \
+    rm -rf /var/lib/apt/lists/*
+
+# network volume 이 /workspace 를 덮으므로 코드를 볼륨 밖으로 옮긴다.
+# --no-deps: 의존성 재해석을 막는다 (pyproject 의 tensorflow==2.15.0 핀이
+#   week2 조합을 되돌리는 것을 차단 -- 실습 1 이 겪은 문제 §1 과 같은 뿌리)
+RUN cp -a /workspace/openvla /opt/openvla && \
+    pip install --no-cache-dir --no-deps -e /opt/openvla
+
+# 컨테이너 시작 스크립트
+COPY runpod_start.sh /usr/local/bin/runpod_start.sh
+RUN chmod +x /usr/local/bin/runpod_start.sh
+
+WORKDIR /opt/openvla
+CMD ["/usr/local/bin/runpod_start.sh"]

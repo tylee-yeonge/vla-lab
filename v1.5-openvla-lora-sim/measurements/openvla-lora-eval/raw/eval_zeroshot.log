@@ -1,0 +1,115 @@
+/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/sapien/_vulkan_tricks.py:78: UserWarning: Failed to find Vulkan ICD file. This is probably due to an incorrect or partial installation of the NVIDIA driver. SAPIEN will attempt to provide an ICD file anyway but it may not work.
+  warn(
+/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.24s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.28s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.09s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:07<00:00,  2.40s/it]
+/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/workspace/study/physical-ai-study/Studies/Phase 4/.venv-vla/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+seed000: {'seed': 0, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed001: {'seed': 1, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed002: {'seed': 2, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed003: {'seed': 3, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed004: {'seed': 4, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed005: {'seed': 5, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed006: {'seed': 6, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed007: {'seed': 7, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed008: {'seed': 8, 'steps': 1, 'reason': 'success', 'reached': False, 'grasped': False, 'lifted': False, 'placed': True}
+seed009: {'seed': 9, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed010: {'seed': 10, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed011: {'seed': 11, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed012: {'seed': 12, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed013: {'seed': 13, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed014: {'seed': 14, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed015: {'seed': 15, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed016: {'seed': 16, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed017: {'seed': 17, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed018: {'seed': 18, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed019: {'seed': 19, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed020: {'seed': 20, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed021: {'seed': 21, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed022: {'seed': 22, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed023: {'seed': 23, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed024: {'seed': 24, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed025: {'seed': 25, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed026: {'seed': 26, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed027: {'seed': 27, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed028: {'seed': 28, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed029: {'seed': 29, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed030: {'seed': 30, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed031: {'seed': 31, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed032: {'seed': 32, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed033: {'seed': 33, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed034: {'seed': 34, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed035: {'seed': 35, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed036: {'seed': 36, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed037: {'seed': 37, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed038: {'seed': 38, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed039: {'seed': 39, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed040: {'seed': 40, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed041: {'seed': 41, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed042: {'seed': 42, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed043: {'seed': 43, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed044: {'seed': 44, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed045: {'seed': 45, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed046: {'seed': 46, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed047: {'seed': 47, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed048: {'seed': 48, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed049: {'seed': 49, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed050: {'seed': 50, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed051: {'seed': 51, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed052: {'seed': 52, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed053: {'seed': 53, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed054: {'seed': 54, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed055: {'seed': 55, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed056: {'seed': 56, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed057: {'seed': 57, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed058: {'seed': 58, 'steps': 2, 'reason': 'success', 'reached': False, 'grasped': False, 'lifted': False, 'placed': True}
+seed059: {'seed': 59, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed060: {'seed': 60, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed061: {'seed': 61, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed062: {'seed': 62, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed063: {'seed': 63, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed064: {'seed': 64, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed065: {'seed': 65, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed066: {'seed': 66, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed067: {'seed': 67, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed068: {'seed': 68, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed069: {'seed': 69, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed070: {'seed': 70, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed071: {'seed': 71, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed072: {'seed': 72, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed073: {'seed': 73, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed074: {'seed': 74, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed075: {'seed': 75, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed076: {'seed': 76, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed077: {'seed': 77, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed078: {'seed': 78, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed079: {'seed': 79, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed080: {'seed': 80, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed081: {'seed': 81, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed082: {'seed': 82, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed083: {'seed': 83, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed084: {'seed': 84, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed085: {'seed': 85, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed086: {'seed': 86, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed087: {'seed': 87, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed088: {'seed': 88, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed089: {'seed': 89, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed090: {'seed': 90, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed091: {'seed': 91, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed092: {'seed': 92, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed093: {'seed': 93, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed094: {'seed': 94, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed095: {'seed': 95, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed096: {'seed': 96, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed097: {'seed': 97, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed098: {'seed': 98, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+seed099: {'seed': 99, 'steps': 50, 'reason': 'env_end', 'reached': False, 'grasped': False, 'lifted': False, 'placed': False}
+
+완료: ../outputs/eval_zeroshot.jsonl
