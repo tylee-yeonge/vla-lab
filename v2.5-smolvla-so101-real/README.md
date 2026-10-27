@@ -1,6 +1,6 @@
 # 시범 50개로 실기 팔이 과제를 하게 되는가 — SO-101 에서 SmolVLA zero-shot vs fine-tuned, 49쌍
 
-> 발행: 2026-10-27 · [physical-ai-study] 프로젝트의 v2.5 산출물, [v1.5](../v1.5-openvla-lora-sim/) 의 real 후속편. 측정 기록 원본: [`measurements/`](./measurements/so101-smolvla-v25/) · 측정 · 판정 · 집계 스크립트: [`scripts/`](./scripts/) · 감독 층 실기 증거: [`evidence/`](./evidence/task_supervisor/) (§7)
+> 발행: 2026-10-27 · [physical-ai-study] 프로젝트의 v2.5 산출물, [v1.5](../v1.5-openvla-lora-sim/) 의 real 후속편. 1분 영상 (before / 데이터 / 학습 / after / 안전 / 결과): https://youtu.be/zaH7cQzPkc8 · 측정 기록 원본: [`measurements/`](./measurements/so101-smolvla-v25/) · 측정 · 판정 · 집계 스크립트: [`scripts/`](./scripts/) · 감독 층 실기 증거: [`evidence/`](./evidence/task_supervisor/) (§7)
 
 ## 1. 문제
 
