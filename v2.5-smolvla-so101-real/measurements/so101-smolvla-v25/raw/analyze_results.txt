@@ -1,0 +1,20 @@
+완성된 쌍 50, 제외 [24] -> 집계 N = 49 (사람이 확정하지 않은 실행 0개)
+조건: task='Pick up the pink cube and place it in the yellow square.', 상한 {'shoulder_pan': 15.0, 'shoulder_lift': 15.0, 'elbow_flex': 15.0, 'wrist_flex': 15.0, 'wrist_roll': 15.0, 'gripper': 25.0}, 순서 ABBA (odd pair A->B, even pair B->A)
+
+[1] 단계별 성공 수 (N쌍 기준)
+| 단계 | zero-shot | fine-tuned |
+|---|---|---|
+| reached | 0/49 | 49/49 |
+| grasped | 0/49 | 49/49 |
+| lifted | 0/49 | 49/49 |
+| placed | 0/49 (Wilson 0.0-7.3%) | 49/49 (Wilson 92.7-100.0%) |
+
+[2] 짝지은 비교 — placed (같은 쌍 번호끼리)
+둘 다 0 / zero-shot 만 0 / fine-tuned 만 49 / 둘 다 아님 0 — 불일치 쌍 49
+exact McNemar 양측 p = 3.55e-15 (alpha 0.05)
+
+[3] 순서 효과 (기술 통계) — 쌍 안에서 1번째 vs 2번째 실행의 placed 수
+  zeroshot: 1번째 0 / 2번째 0
+  finetuned: 1번째 24 / 2번째 25
+
+저장: /workspace/study/physical-ai-study/Studies/Hardware-Arm/v25/outputs/plots/stage_counts.png
