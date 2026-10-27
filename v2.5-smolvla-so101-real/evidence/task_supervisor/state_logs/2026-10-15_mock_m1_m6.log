@@ -1,0 +1,100 @@
+# /task_supervisor/state 수신 로그 — mock bringup (use_mock_hardware:=true). 첫 열은 리스너 시작 기준 초.
+# M1 은 2026-10-14 (파지 단계 check: none, 같은 노드에서 2회 연속), M2-M6 은 2026-10-15. 시나리오 정의: task_supervisor.md §4.
+
+## M1 — 정상 흐름 (1회차)
+   0.000  IDLE: startup
+  19.408  IDLE -> PRECHECK: START
+  19.419  PRECHECK -> EXECUTING: OK
+  21.139  EXECUTING -> VERIFYING: STEP_REACHED
+  21.159  VERIFYING -> EXECUTING: NEXT_STEP
+  21.239  EXECUTING -> VERIFYING: STEP_REACHED
+  21.259  VERIFYING -> EXECUTING: NEXT_STEP
+  24.559  EXECUTING -> VERIFYING: STEP_REACHED
+  24.579  VERIFYING -> DONE: LAST_STEP
+  24.599  DONE -> IDLE: COMPLETE
+
+## M1 — 정상 흐름 (2회차, DONE -> IDLE 뒤 같은 노드에서 start)
+  50.851  IDLE -> PRECHECK: START
+  50.859  PRECHECK -> EXECUTING: OK
+  54.159  EXECUTING -> VERIFYING: STEP_REACHED
+  54.179  VERIFYING -> EXECUTING: NEXT_STEP
+  54.259  EXECUTING -> VERIFYING: STEP_REACHED
+  54.279  VERIFYING -> EXECUTING: NEXT_STEP
+  57.579  EXECUTING -> VERIFYING: STEP_REACHED
+  57.599  VERIFYING -> DONE: LAST_STEP
+  57.619  DONE -> IDLE: COMPLETE
+
+## M2 — 타임아웃 (retreat 에 timeout_s: 0.1, 파지 검사 끔)
+  66.911  IDLE: startup
+  67.825  IDLE -> PRECHECK: START
+  67.838  PRECHECK -> EXECUTING: OK
+  67.919  EXECUTING -> VERIFYING: STEP_REACHED
+  67.939  VERIFYING -> EXECUTING: NEXT_STEP
+  68.019  EXECUTING -> VERIFYING: STEP_REACHED
+  68.039  VERIFYING -> EXECUTING: NEXT_STEP
+  68.159  EXECUTING -> RETRY: TIMEOUT
+  68.179  RETRY -> EXECUTING: RETRY_LEFT, retry 1/1 -> retreat
+  68.299  EXECUTING -> RETRY: TIMEOUT
+  68.319  RETRY -> STOPPED: NO_RETRY_LEFT, no retry left
+  68.388  SOFT_STOP: stopped
+  68.388  SOFT_STOP: stop returned in 0.07 s (success=True, 정지: position_controller 비활성, 유지 목표 shoulder_pan=0.0090, shoulder_lift=-0.1000, elbow_flex=0.1000, wrist_flex=0.1000, wrist_roll=0.1010, gripper=-0.8410 (유지 명령 적용 대기 0.05 s))
+
+## M3 — 파지 실패 (원본 파일, mock 은 -0.867 을 그대로 돌려준다) + M4 — resume / abort
+  94.178  IDLE: startup
+  95.091  IDLE -> PRECHECK: START
+  95.106  PRECHECK -> EXECUTING: OK
+  95.326  EXECUTING -> VERIFYING: STEP_REACHED
+  95.346  VERIFYING -> EXECUTING: NEXT_STEP
+  95.426  EXECUTING -> VERIFYING: STEP_REACHED
+  95.446  VERIFYING -> RETRY: CHECK_FAILED, gripper -0.867 <= -0.8
+  95.466  RETRY -> EXECUTING: RETRY_LEFT, retry 1/1 -> approach
+  95.546  EXECUTING -> VERIFYING: STEP_REACHED
+  95.566  VERIFYING -> EXECUTING: NEXT_STEP
+  95.646  EXECUTING -> VERIFYING: STEP_REACHED
+  95.666  VERIFYING -> RETRY: CHECK_FAILED, gripper -0.867 <= -0.8
+  95.686  RETRY -> STOPPED: NO_RETRY_LEFT, no retry left
+  95.747  SOFT_STOP: stopped
+  95.747  SOFT_STOP: stop returned in 0.06 s (success=True, 정지: position_controller 비활성, 유지 목표 shoulder_pan=0.0090, shoulder_lift=0.0000, elbow_flex=0.0000, wrist_flex=0.0000, wrist_roll=0.1010, gripper=-0.8670 (유지 명령 적용 대기 0.05 s))
+  97.636  STOPPED -> PRECHECK: RESUME
+  97.646  PRECHECK -> STOPPED: FAIL, release first
+ 100.197  SOFT_STOP: released
+ 100.745  STOPPED -> PRECHECK: RESUME
+ 100.746  PRECHECK -> EXECUTING: OK
+ 100.826  EXECUTING -> VERIFYING: STEP_REACHED
+ 100.846  VERIFYING -> EXECUTING: NEXT_STEP
+ 100.926  EXECUTING -> VERIFYING: STEP_REACHED
+ 100.946  VERIFYING -> RETRY: CHECK_FAILED, gripper -0.867 <= -0.8
+ 100.966  RETRY -> EXECUTING: RETRY_LEFT, retry 1/1 -> approach
+ 101.046  EXECUTING -> VERIFYING: STEP_REACHED
+ 101.066  VERIFYING -> EXECUTING: NEXT_STEP
+ 101.146  EXECUTING -> VERIFYING: STEP_REACHED
+ 101.166  VERIFYING -> RETRY: CHECK_FAILED, gripper -0.867 <= -0.8
+ 101.186  RETRY -> STOPPED: NO_RETRY_LEFT, no retry left
+ 101.247  SOFT_STOP: stopped
+ 101.248  SOFT_STOP: stop returned in 0.06 s (success=True, 정지: position_controller 비활성, 유지 목표 shoulder_pan=0.0090, shoulder_lift=0.0000, elbow_flex=0.0000, wrist_flex=0.0000, wrist_roll=0.1010, gripper=-0.8670 (유지 명령 적용 대기 0.05 s))
+ 103.318  STOPPED -> IDLE: ABORT
+
+## M6 — 외부 정지 (M1 파일, retreat 보간 중 /soft_stop/stop)
+ 133.946  IDLE: startup
+ 134.510  IDLE -> PRECHECK: START
+ 134.519  PRECHECK -> EXECUTING: OK
+ 134.599  EXECUTING -> VERIFYING: STEP_REACHED
+ 134.619  VERIFYING -> EXECUTING: NEXT_STEP
+ 134.699  EXECUTING -> VERIFYING: STEP_REACHED
+ 134.719  VERIFYING -> EXECUTING: NEXT_STEP
+ 137.217  SOFT_STOP: stopped
+ 137.219  EXECUTING -> STOPPED: STOPPED, external stop
+ 139.277  SOFT_STOP: released
+ 140.820  STOPPED -> PRECHECK: RESUME
+ 140.839  PRECHECK -> EXECUTING: OK
+ 141.680  EXECUTING -> VERIFYING: STEP_REACHED
+ 141.700  VERIFYING -> DONE: LAST_STEP
+ 141.720  DONE -> IDLE: COMPLETE
+
+## M5 — 한계 근접 (approach 의 wrist_flex 목표 2.0, 상한 1.886 — 리미터가 자른다)
+ 162.139  IDLE: startup
+ 162.943  IDLE -> PRECHECK: START
+ 162.955  PRECHECK -> EXECUTING: OK
+ 164.235  EXECUTING -> STOPPED: NEAR_LIMIT, near limit: wrist_flex
+ 164.297  SOFT_STOP: stopped
+ 164.298  SOFT_STOP: stop returned in 0.06 s (success=True, 정지: position_controller 비활성, 유지 목표 shoulder_pan=0.0090, shoulder_lift=-1.0070, elbow_flex=0.8860, wrist_flex=1.8590, wrist_roll=0.1010, gripper=-0.8410 (유지 명령 적용 대기 0.05 s))

@@ -1,0 +1,10 @@
+# /task_supervisor/state 수신 로그 — 2026-10-15 실기 R0 (예비: 큐브 없이 현재 자세에서 shoulder_lift +0.2 · elbow_flex -0.2 rad 들었다 내림, max_step_rad 0.005). 첫 열은 리스너 시작 기준 초.
+# 보간 중 최대 |명령-실제|: shoulder_pan=0.000, shoulder_lift=0.035, elbow_flex=0.069, wrist_flex=0.000, wrist_roll=0.000, gripper=0.000 rad
+   0.000  IDLE: startup
+  17.922  IDLE -> PRECHECK: START
+  17.934  PRECHECK -> EXECUTING: OK
+  18.774  EXECUTING -> VERIFYING: STEP_REACHED
+  18.794  VERIFYING -> EXECUTING: NEXT_STEP
+  19.634  EXECUTING -> VERIFYING: STEP_REACHED
+  19.654  VERIFYING -> DONE: LAST_STEP
+  19.674  DONE -> IDLE: COMPLETE

@@ -9,7 +9,7 @@ VLA 모델을 **실제로 돌게 만드는 과정**의 공개 기록입니다. �
 | # | 산출물 | 내용 | 상태 |
 |---|---|---|---|
 | v1.5 | [`v1.5-openvla-lora-sim/`](./v1.5-openvla-lora-sim/) | OpenVLA 7B 를 sim (ManiSkill) 데이터로 LoRA adaptation — zero-shot vs fine-tuned, 동일 조건 98쌍, 부분 도달률·배제 분석 | **발행 (2026-08-31)** |
-| v2.5 | [`v2.5-smolvla-so101-real/`](./v2.5-smolvla-so101-real/) | SO-101 실기에서 SmolVLA 를 teleop 시범 50개로 파인튜닝 — zero-shot vs fine-tuned, 동일 조건 49쌍, placed 0/49 vs 49/49, 절차 이탈 공개 | **발행 (2026-10-27)** |
+| v2.5 | [`v2.5-smolvla-so101-real/`](./v2.5-smolvla-so101-real/) | SO-101 실기에서 SmolVLA 를 teleop 시범 50개로 파인튜닝 — zero-shot vs fine-tuned, 동일 조건 49쌍, placed 0/49 vs 49/49, 절차 이탈 공개. 정책과 분리한 감독 층 (ROS 2 상태기계) 의 실기 증거 포함 | **발행 (2026-10-27)** |
 
 ## 실행 환경 요약
 

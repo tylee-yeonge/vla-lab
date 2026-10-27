@@ -1,6 +1,6 @@
 # 시범 50개로 실기 팔이 과제를 하게 되는가 — SO-101 에서 SmolVLA zero-shot vs fine-tuned, 49쌍
 
-> 발행: 2026-10-27 · [physical-ai-study] 프로젝트의 v2.5 산출물, [v1.5](../v1.5-openvla-lora-sim/) 의 real 후속편. 측정 기록 원본: [`measurements/`](./measurements/so101-smolvla-v25/) · 측정 · 판정 · 집계 스크립트: [`scripts/`](./scripts/)
+> 발행: 2026-10-27 · [physical-ai-study] 프로젝트의 v2.5 산출물, [v1.5](../v1.5-openvla-lora-sim/) 의 real 후속편. 측정 기록 원본: [`measurements/`](./measurements/so101-smolvla-v25/) · 측정 · 판정 · 집계 스크립트: [`scripts/`](./scripts/) · 감독 층 실기 증거: [`evidence/`](./evidence/task_supervisor/) (§7)
 
 ## 1. 문제
 
@@ -84,3 +84,32 @@ v1.5 에서는 OpenVLA 7B 를 sim 데이터로 LoRA adaptation 했다. 접근 (r
 - **데이터셋은 비공개다.** HF Hub 의 `so101-pick-cube-v25` (50 에피소드, 44,900 프레임, 30 fps, 두 카메라 1280x720) 는 공개하지 않았다. 수집 · 학습 명령과 측정 스크립트는 공개한다.
 
 측정 설계 · 원본 수치 · 해석은 [`measurements/so101-smolvla-v25/`](./measurements/so101-smolvla-v25/) 의 environment · methodology · findings 3분할 + raw + plots 에, 측정 러너 · 상한 측정 · 영상 판정 · 집계 · 정규화 통계 주입 스크립트는 [`scripts/`](./scripts/) 에 있다. 스크립트의 경로는 작성 환경 (`/workspace/...`) 기준이다.
+
+## 7. 덧붙임 — 정책 밖의 안전 · 감독 층 (측정과 분리)
+
+위 49쌍에서 팔을 지킨 것은 명령 상한 (`max_relative_target`) 과 운영자의 → 키뿐이다. 실패를 알아차리고 스스로 멈추는 층은 이 측정에 넣지 않았다 — 넣으면 변인이 모델 하나가 아니게 된다. 그 층은 같은 팔 위에 따로 만들어 2026-10-18 에 실기 시험을 마쳤고, 증거를 여기 같이 둔다. 이전 업무에서 설계해 온 상태기계 · 예외 복구 패턴을 매니퓰레이터 태스크 실행으로 옮긴 것이다.
+
+**무엇인가.** ROS 2 (rclpy) 노드 `task_supervisor`. 웨이포인트 7단계 (approach → descend → grasp → lift → place → release → retreat) 를 50 Hz 보간 (틱당 관절별 최대 0.01 rad) 으로 실행하는 7 상태 · 16 전이 상태기계 (IDLE · PRECHECK · EXECUTING · VERIFYING · RETRY · STOPPED · DONE). 감지 입력은 `/joint_states` 하나이고 감지 조건은 4개다.
+
+| 조건 | 판정 | 결과 |
+|---|---|---|
+| 추종 오차 | 목표 도달 뒤 1.0 s 안에 전 관절이 0.08 rad 이내로 들어오지 못함 | RETRY |
+| 타임아웃 | 단계 시작부터 `timeout_s` (기본 5 s) 초과 | RETRY |
+| 파지 실패 | grasp 단계 뒤 gripper 가 -0.80 rad 이하 (빈 손 닫힘) | RETRY |
+| 한계 근접 | 어느 관절이든 소프트 리밋 0.03 rad 이내 | 재시도 없이 STOPPED |
+
+재시도 예산은 운영자 개입 사이에 1회다. 두 번째 실패는 STOPPED — `/soft_stop/stop` 을 보내 컨트롤러를 끄고 토크를 유지한 채 자세를 지킨다. 감독기는 정지를 풀지 않는다. 운영자가 `/soft_stop/release` 를 치고 resume 하면 PRECHECK 가 명령점을 현재 위치로 다시 맞추고 실패한 단계의 `retry_from` 부터 간다 — 그래서 정지 중에 팔을 조그로 옮겨 놓아도 튐 없이 이어진다. 운영자 터미널의 외부 정지도 같은 STOPPED 로 들어온다.
+
+**실기 결과 (2026-10-18, 같은 팔 · 같은 큐브).**
+
+| 시험 | 기준 | 결과 |
+|---|---|---|
+| R1 정상 3회 | DONE 3/3, 큐브가 목표 칸에 | DONE 3/3 (첫 회 느린 보간 35.7 s, 2 · 3회 18.0 s). 큐브는 2/3 칸 안, 1/3 왼쪽 아래 경계에 걸침 |
+| R2 큐브를 치우고 3회 | 파지 실패 감지 → RETRY 1회 → STOPPED 3/3, 정지 뒤 토크 유지 | 3/3. gripper -0.816 ~ -0.818 ≤ -0.80 으로 감지, 정지 응답 0.07 s, 정지 뒤 3 s 동안 관절값 불변 |
+| R3 R2 의 STOPPED 에서 복구 | release → resume → 튐 없이 DONE | 팔이 시작 칸을 가려 approach 자세로 조그 → 큐브 재배치 → resume → DONE 13.0 s, 큐브 칸 한가운데 |
+
+실기 7회 실행에서 추종 오차 · 한계 근접 오판 0건 (보간 중 최대 |명령-실제| 0.134 rad 이지만 도달 뒤 1.0 s 안에 0.08 이내로 정착). 그 전에 mock (받은 명령을 그대로 현재 위치로 돌려주는 하드웨어 대역) 으로 M1-M6 (정상 · 타임아웃 · 파지 실패 · resume/abort · 한계 근접 · 외부 정지) 를 통과시켰다.
+
+**한계.** 파지 실패 문턱 -0.80 은 빈 손 닫힘 (-0.816) 과 0.018 rad 차이라 여유가 작다 — 쥔 상태 (-0.36) 와의 중간인 -0.60 이 후보다. R1 의 1/3 경계 걸침은 lift · place 의 gripper 값 (-0.330, 쥐는 힘이 거의 없음) 이 원인으로 보이고 고치지 않았다. 서보 부하 · 카메라는 감지에 쓰지 않는다. 정책 (SmolVLA) 을 이 상태기계에 넣는 것은 하지 않았다 — 그때는 성공 판정을 누가 하는지가 다시 설계 문제가 된다.
+
+**증거**: [`evidence/task_supervisor/`](./evidence/task_supervisor/) — `state_logs/` (mock M1-M6 · 실기 R0 · R1-R3 의 `/task_supervisor/state` 수신 로그, 전이마다 한 줄), `video/task_supervisor_r1_r2_r3.mp4` (R1 2회차 · R2 1회 · R3 를 이은 46 s, 라벨 오버레이), `stills/` (R1 전후 · R3 뒤의 전체 뷰). 원본 영상 (95 MB) 과 ros2 bag (12 MB) 은 로컬에만 있다.
